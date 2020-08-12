@@ -1,20 +1,19 @@
 function multiscalednudemo
-%D1WLSDESTRIPEDEMO CNLM denoising method.
-%  D1WLSDESTRIPEDEMO reads and denoises raw uncooled infrared images with
-%  stripe noise.
+%a single-frame-based multi-scale low-frequency NU correction method
+%  MULTISCALEDNUDEMO reads and denoises raw uncooled infrared images with
+%  low-frequency NU. 
 %
-%  To run the demo, type D1WLSDESTRIPEDEMO from the Matlab prompt.
-
+%  To run the demo, type MULTISCALEDNUDEMO from the Matlab prompt.
+%
 %  Fangzhou Li
-%
 %  November 2019
 
 disp(' ');
-disp('  **********  D1-WLS Destriping Demo  **********');
+disp('  **********  Multi-scale Low-frequency NU removal Demo  **********');
 disp(' ');
-disp('  This demo reads raw uncooled infrared images with stripe noise.');
-disp('  The stripe noise will be removed using two 1D filters on horizontal and vertical direction.');
-disp('  The denoised image and the estimated stripe noise will be shown.');
+disp('  This demo reads raw uncooled infrared images with low-frequency NU(LFNU)');
+disp('  The LFNU is obtained from coarse to fine from the Gaussian pyramid of the image.');
+disp('  The denoised image and the estimated LFNU will be shown.');
 disp(' ');
 
 %% prompt user for image %%
@@ -31,12 +30,11 @@ im = im + NU_Level*NU;
 
 %% generate noisy image %% 
 
-% denoise!
+% denoise
 disp('Performing Multiscale DNU...');
 [bias] = mainpy(im);
 
 % show results %
-
 figure; imshow(newlp(im));
 title('Original noisy image');
 
