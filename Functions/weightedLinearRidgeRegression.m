@@ -43,7 +43,7 @@ dL = mean_a.*x + mean_b.*y + mean_c;
 end
 
 % A copy of boxfilter function from the 
-% 
+% official Matlab implementation of 'Guided image filtering'
 function imDst = boxfilter(imSrc, r)
 %   BOXFILTER   O(1) time box filtering using cumulative sum
 %
